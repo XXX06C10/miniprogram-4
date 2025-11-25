@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="form-group">
+    <view class="label">日期</view>
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="form-group">
+    <textarea class="content-input" placeholder="今天发生了什么浪漫的事呢..." placeholder-style="color: #FFB6C1;" bindinput="onContentInput" value="{{content}}" maxlength="-1"></textarea>
+    <view class="word-count">{{content.length}}/1000</view>
+  </view>
+
+  <view class="image-list">
+    <block wx:for="{{images}}" wx:key="*this">
+      <view class="image-item">
+        <image src="{{item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewImage"></image>
+        <view class="delete-btn" data-index="{{index}}" catchtap="deleteImage">×</view>
+      </view>
+    </block>
+    <view class="add-image" bindtap="chooseImage" wx:if="{{images.length < 9}}">
+      <text>+</text>
+    </view>
+  </view>
+
+  <button class="submit-btn" bindtap="submitDiary">记录美好</button>
+</view>

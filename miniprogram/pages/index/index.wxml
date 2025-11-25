@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="diary-list">
+    <block wx:for="{{diaryList}}" wx:key="_id">
+      <view class="diary-item" bindtap="gotoDetail" data-id="{{item._id}}">
+        <view class="diary-date">{{item.date}}</view>
+        <view class="diary-content">{{item.content}}</view>
+        <view class="diary-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image src="{{item.images[0]}}" mode="aspectFill" class="cover-image"></image>
+          <view class="image-count" wx:if="{{item.images.length > 1}}">+{{item.images.length}}</view>
+        </view>
+      </view>
+    </block>
+    <view class="empty-tip" wx:if="{{diaryList.length === 0}}">
+      还没有日记哦，快去记录吧~
+    </view>
+  </view>
+
+  <view class="add-btn" bindtap="gotoWrite">
+    <text>❤</text>
+  </view>
+</view>

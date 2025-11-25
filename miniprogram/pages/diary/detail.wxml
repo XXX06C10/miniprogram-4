@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="header">
+    <view class="date">{{diary.date}}</view>
+  </view>
+
+  <view class="content">
+    <text user-select>{{diary.content}}</text>
+  </view>
+
+  <view class="image-list">
+    <block wx:for="{{diary.images}}" wx:key="*this">
+      <image src="{{item}}" mode="widthFix" class="detail-image" data-index="{{index}}" bindtap="previewImage" show-menu-by-longpress></image>
+    </block>
+  </view>
+
+  <view class="footer">
+    <view class="delete-btn" bindtap="onDelete">删除这篇日记</view>
+  </view>
+</view>
